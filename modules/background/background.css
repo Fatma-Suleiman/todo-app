@@ -1,0 +1,113 @@
+
+.shape-1, .shape-2, .shape-3, .shape-4, .small-circle-outline {
+    position: absolute;
+    opacity: 0.6; 
+    z-index: 1; 
+}
+
+@keyframes outlineFlicker {
+    0%, 100% {
+        opacity: 0.25;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7; 
+        transform: scale(1.02);
+    }
+    75% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes pulseFlicker {
+    0% { opacity: 0.6; transform: scale(1); }
+    30% { opacity: 0.8; }
+    70% { opacity: 0.5; transform: scale(1.05); }
+    100% { opacity: 0.6; transform: scale(1); }
+}
+
+.small-circle-outline {
+    position: absolute;
+    border: 4px solid #E1EDFC; 
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    top: 18%;
+    left: 5%; 
+    z-index: 1;
+    opacity: 0.25;
+    animation: outlineFlicker 3s ease-in-out infinite;
+}
+
+.small-circle-outline-2 {
+    position: absolute;
+    border: 4px solid #f5e399; 
+    border-radius: 50%;
+    width: 62px;
+    height: 60px;
+    top: 68%;
+    right: 8%; 
+    z-index: 1;
+    opacity: 0.25;
+    animation: outlineFlicker 3s ease-in-out infinite;
+}
+
+.blurred-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(20px); 
+    z-index: 1;
+    
+}
+
+.shape-1.blurred-orb {
+    background-color:rgb(117, 117, 228); /* Purple/Blue */
+    top: 35%; 
+    left: 7%; 
+    width: 60px;
+    height: 60px;
+    animation: pulseFlicker 10s linear infinite; 
+}
+.shape-2.blurred-orb {
+    background-color:#6291ca; /* Purple/Blue */
+    top: 70%; 
+    left: 10%; 
+    width: 60px;
+    height: 60px;
+    animation: pulseFlicker 10s linear infinite; 
+}
+
+.shape-3.blurred-orb {
+    background-color: #f5df87; 
+    top: 10%;
+    right: 5%;
+    width: 60px;
+    height: 60px; 
+    animation: pulseFlicker 12s linear infinite 2s; 
+}
+
+@keyframes moveUpDownFast {
+    0% {
+        transform: translateY(-20px) rotate(15deg); 
+    }
+    100% {
+        transform: translateY(0) rotate(15deg); 
+    }
+}
+    
+.triangle-kite, .triangle-grey {
+    position: absolute;
+    z-index: 2;  
+}
+.shape-5.triangle-kite {
+    top: 20%;
+    right: 24%;
+    transform: rotate(90deg); 
+    color: #49DFB0;
+    animation: moveUpDownFast 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate; 
+}
+.shape-6.triangle-grey {
+    top: 50%;
+    right: 24%;
+   opacity: 0.2; 
+}

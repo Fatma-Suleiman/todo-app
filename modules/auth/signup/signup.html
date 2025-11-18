@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="./modules/auth/signup/signup.css">
+<div data-import="./modules/background/background.html"></div>
+
+<section class="signup-page">
+  <div class="card-signup-page">
+    <form class="signup-form">
+      <header>
+        <div class="form-logo">
+            <div class="form-bubble"></div>
+           <div class="form_logo">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-check-big h-10 w-10 text-white" aria-hidden="true"><path d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"/><path d="m9 11 3 3L22 4"/></svg></div>
+        </div>
+        <div class="header-text">
+        <h4>Join TaskMaster</h4>
+        <p style="color: #4B5666;">Create an account to boost your productivity</p>
+        </div>
+      </header>
+
+<div class="segmented-control" role="tablist">
+  <input type="radio" name="seg" id="seg-login" checked>
+  <label for="seg-login" role="tab" aria-controls="panel-login">Login</label>
+
+  <input type="radio" name="seg" id="seg-signup">
+  <label for="seg-signup" role="tab" >Sign Up</label>
+
+  <div class="slider"></div>
+</div>
+       
+        <div class="form-row">  
+
+            <div class="form-group">
+  <label for="signup-name">Full Name*</label>
+  <div class="input-signup">
+  <img src="/assets/images/fullName.svg" alt="">
+  <input type="text" id="signup-name" autocomplete="name" name="name" placeholder="John Doe" required/>
+  </div>
+</div>
+
+       <div class="form-group">
+  <label>Email*</label>
+  <div class="input-signup">
+  <img src="/assets/images/email.svg" alt="">
+  <input  id="signup-email" type="text" autocomplete="email" name="email"  placeholder="johndoe@example.com" required/>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Password*</label>
+ <div class="input-signup">
+  <img src="/assets/images/lock.svg" alt="">
+  <input type="password" id="signup-password" autocomplete="new-password" name="password"  placeholder="••••••••" required/>
+  </div>
+  <p style="font-size: 12px; color: grey;">Password must be at least 6 characters long</p> 
+</div>
+   
+  
+      <div data-import="./components/button/button.html"></div>
+     
+      </div>
+       
+      <div data-import="./components/footer/footer.html"></div>
+  
+     
+      </div>
+    </form>
+  </div>
+</section>
+
+
+

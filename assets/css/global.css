@@ -1,0 +1,44 @@
+
+:root{
+    --primary-color: #3750FA;
+    --bg-color-1: #FFFFFF;
+    --bg-color-2: #f7f9fd;
+    --text: #222;
+  }
+
+  html,body { height: 100%; margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+  min-height: 100vh;
+  background-color: var(--bg-color-2);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  padding: 20px;
+  position: relative;
+  overflow-x: initial; 
+    overflow-y: auto;
+}
+
+/* global view switching */
+[data-view] {
+  display: none;
+  /* keep layout space if you prefer: use visibility instead of display,
+     or use absolute positioning — this is the simplest safe option */
+}
+
+[data-view].active {
+  display: block;
+}
+
+/* optional: nice fade when switching */
+[data-view] {
+  transition: opacity 160ms ease-in-out;
+  opacity: 0;
+}
+[data-view].active {
+  opacity: 1;
+}

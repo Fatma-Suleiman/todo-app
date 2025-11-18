@@ -1,0 +1,19 @@
+ footer{ 
+ 
+ align-items: center;
+  font-size: 14px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    color:rgb(104, 103, 103) ;
+}
+
+.terms a{
+    text-align: none;
+}
+.terms{
+font: 12px;
+color: rgb(132, 131, 131);
+}
+
