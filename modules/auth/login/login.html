@@ -1,30 +1,33 @@
-<link rel="stylesheet" href="./modules/auth/login/login.css">
-<div data-import="./modules/background/background.html"></div>
+<!DOCTYPE html>
+<link rel="stylesheet" href="/modules/auth/login/login.css">
+<div data-import="/modules/background/background.html"></div>
 
-<section class="login-page">
+<section class="login-page"  data-view="login">
   <div class="card-login-page">
     <form class="login-form">
       <header>
         <div class="form-logo">
             <div class="form-bubble"></div>
-           <div class="form_logo">
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-check-big h-10 w-10 text-white" aria-hidden="true"><path d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"/><path d="m9 11 3 3L22 4"/></svg></div>
+           <div class="form_logo"> <img src="/assets/images/logo.svg" alt=""> </div>
         </div>
-        <div class="header-text">
+        <div class="header-text-login">
         <h4>Welcome Back!</h4>
         <p style="color: #4B5666;">Enter your details to access your account</p>
         </div>
       </header>
 
-<div class="segmented-control" role="tablist">
-  <input type="radio" name="seg" id="seg-login-login" checked>
-  <label for="seg-login" role="tab" aria-controls="panel-login">Login</label>
 
-  <input type="radio" name="seg" id="seg-signup-login">
-  <label for="seg-signup" role="tab" >Sign Up</label>
+<div class="segmented-control" role="tablist">
+  <input type="radio" name="auth-login" id="seg-login" checked>
+  <label for="seg-login">Login</label>
+
+  <input type="radio" name="auth-login" id="seg-signup">
+  <label for="seg-signup">Sign Up</label>
 
   <div class="slider"></div>
 </div>
+
+
 
         <div class="form-row">  
        <div class="form-group">
@@ -44,13 +47,13 @@
 </div>
     
   
-      <div data-import="./components/button/button.html"></div>
-     
-      </div>
-       
-      <div data-import="./components/footer/footer.html"></div>
-  
-     
+      <div class="button-component">
+          <button type="button" class="btn btn-ghost"> Help?</button>
+          <button id="login-button"  type="submit" class="btn btn-primary">Next Step</button>
+        </div>
+      </div> 
+   
+    <div data-import="./components/footer/footer.html"></div>
       </div>
     </form>
   </div>

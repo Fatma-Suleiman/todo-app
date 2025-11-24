@@ -1,3 +1,95 @@
-<section data-view="dashboard" class="auth-view">
-  <h2>Welcome to the Dashboard!</h2>
+ <!DOCTYPE html>
+ <link rel="stylesheet" href="/modules/dashboard/dashboard.css">
+ 
+<section class="dashboard">
+<aside class="left-side">
+    <div data-import="/components/header/header.html"></div>
+    <div data-import="/components/profile/profile.html"></div>
+    <div data-import="/components/navbar/navbar.html"></div>
+    <div id="logoutButton" class="logoutbtn"><img src="/assets/images/logout.svg" alt="">Logout</div>
+</aside>
+
+<main class="dashboard-content">
+<h1 id="welcomeMessage" class="message">Good</h1>
+<p>Here's what's happening with your productivity today</p>
+
+<div class="dashboard-summary">
+    <div class="card active-tasks">
+        <div class="active-content"><span style="font-size: 14px; font-weight: 500; color:rgb(30, 41, 59);">Active Tasks</span> <img src="/assets/images/logo.svg" alt=""> </div>
+        <div class="completed-tasks">
+            <div class="completed-tasks-view">0</div>
+            <span id="completed-tasks" class="summary-label"></span></div>
+    </div>
+
+
+    <div class="card total-expenses">
+        <div class="total-expenses-content"><span style="font-size: 14px; font-weight: 500; color:rgb(30, 41, 59);">Total Expenses</span> <img src="/assets/images/expense.svg" alt=""> </div>
+        <div class="expenses-total">
+            <div class="expenses-total-view">$0.00</div>
+            <span class="summary-label">This period</span></div>
+    </div>
+
+    
+    <div class="card total-notes">
+        <div class="total-notes-content"><span style="font-size: 14px; font-weight: 500; color:rgb(30, 41, 59);">Total Notes</span><img src="/assets/images/notes.svg" alt=""> </div>
+        <div class="notes-total">
+            <div class="total-notes-view">0</div>
+            <span class="summary-label">Saved notes</span></div>
+    </div>
+   
+    <div class="card completion-rate">
+        <div class="completion-rate-content"><span style="font-size: 14px; font-weight: 500; color:rgb(30, 41, 59);">Completion Rate</span><img src="/assets/images/completion.svg" alt=""></div>
+    <div class="completed-rate">
+            <div class="completed-rate-view">0%</div>
+            <span class="summary-label">Task completion</span></div>
+    </div>
+</div>
+
+
+<div class="task-actions-wrapper">
+    <div class="card recent-tasks">
+        <div class="recent_class"> <img src="/assets/images/clock.svg" alt=""> <h4>Recent Tasks</h4></div>
+    <div class="recent-tasks-summary"><!--JS DYNAMIC--></div>
+    </div>
+
+    <div class="card actions"> <div class="button_actions"> <img src="/assets/images/completion.svg" alt=""> <h4>Quick Actions</h4></div>
+    <div class="btn-actions">
+    <button class="btn-task">
+        <div class="btn-task-content">
+            <div class="task-action-logo">
+                <img src="/assets/images/logo.svg" alt="">
+                </div> 
+               <div class="task-action-text"> <h4>Create New Task</h4> <p>Add a task to your list</p> </div>
+        </div>
+
+    </button>
+    <button class="btn-expense ">
+        <div class="btn-expense-content">
+            <div class="expense-logo">
+                <img src="/assets/images/expense.svg" alt="">
+            </div>
+            <div class="expense-text"><h4>Track Expense</h4> <p>Add a task to your list</p></div>
+        </div>
+    </button>
+
+    <button class="btn-note">
+      <div class="btn-note-content">
+        <div class="note-logo">
+            <img src="/assets/images/notes.svg" alt="">
+        </div>
+        <div class="note-text"> <h4>Write Note</h4> <p>Capture your thoughts</p></div>
+
+      </div>
+    </button>
+
+
+    </div>
+    </div>
+
+</div>
+
+</main>
 </section>
+
+<script src="/modules/dashboard/dashboard.js" defer></script>
+

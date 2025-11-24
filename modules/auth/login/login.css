@@ -1,10 +1,12 @@
 
+
 .card-login-page{
   width: 450px;
   z-index: 10;
   height: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; 
   flex-wrap: nowrap;
   border-radius: 16px;
   background-color: oklab(0.999994 0.0000455678 0.0000200868 / 0.95);
@@ -44,6 +46,7 @@
     rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
     overflow: visible; 
+
 }
 
 .form-logo::before {
@@ -65,7 +68,6 @@
   height: 24px;
    top: -8px;
   right: -8px;
-  
   border-radius: 50%;
   background-color: oklch(0.852 0.199 91.936); 
   z-index: 2; 
@@ -73,7 +75,7 @@
  
 }
 
-.form_logo svg{
+.form_logo img{
   width: 40px;
   height: 40px;
   display: block;
@@ -81,6 +83,7 @@
   border-radius: 0px;
   color: #fff;
   background-color: rgba(0, 0, 0, 0);
+filter: brightness(0) invert(1);
 }
 
 .header-text {

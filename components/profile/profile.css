@@ -1,0 +1,31 @@
+.profile{
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ebe5e5;
+    display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  padding: 14px;
+  border-radius: 50%;
+  background-color: #3153FA;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.profile-info p{
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: #40444a;
+
+}

@@ -1,103 +1,101 @@
-/* ========== VIEW SWITCHING ========== */
 function showView(name) {
-  const sections = document.querySelectorAll("[data-view]");
-  sections.forEach((s) => {
-    s.classList.toggle("active", s.getAttribute("data-view") === name);
+  const allViews = document.querySelectorAll("[data-view]");
+  allViews.forEach((el) => {
+    const viewName = el.getAttribute("data-view");
+    el.classList.toggle("active", viewName === name);
   });
 
-  // Ensure the segmented control in the active section reflects the state
+  const authRoot = document.querySelector('[data-view="auth"]');
+  if (authRoot) {
+    authRoot.classList.toggle("active", name === "login" || name === "signup");
+  }
+
   const activeSection = document.querySelector(`[data-view="${name}"]`);
-  if (activeSection) {
-    const seg = activeSection.querySelector(".segmented-control");
-    if (seg) {
-      const radios = seg.querySelectorAll('input[type="radio"]');
-      if (radios.length >= 2) {
-        if (name === "login") radios[0].checked = true;
-        if (name === "signup") radios[1].checked = true;
-      }
+  if (!activeSection) {
+    console.warn(`showView: no element found with data-view="${name}"`);
+    return;
+  }
+
+  const seg = activeSection.querySelector(".segmented-control");
+  if (seg) {
+    const radios = seg.querySelectorAll('input[type="radio"]');
+    if (radios.length >= 2) {
+      radios[0].checked = name === "login";
+      radios[1].checked = name === "signup";
     }
   }
 }
 
-/* Show login first on page load */
-document.addEventListener("DOMContentLoaded", () => showView("login"));
 
-/* ========== SIMPLE LOCALSTORAGE AUTH (FRONTEND-ONLY) ========== */
 
-/**
- * registerUser(email, password)
- * - validates inputs
- * - enforces password length >= 6
- * - saves single user under key 'tm_user' in localStorage
- * - returns { ok: true } or { ok: false, error: "..." }
- */
-function registerUser(email, password) {
-  if (!email || !password) {
-    return { ok: false, error: "Please provide email and password." };
-  }
+function registerUser(email, password, name = "") {
+  if (!email || !password) return { ok: false, error: "Please provide email and password." };
+  if (password.length < 6) return { ok: false, error: "Password must be at least 6 characters long." };
 
-  if (password.length < 6) {
-    return { ok: false, error: "Password must be at least 6 characters long." };
-  }
-
-  // Basic email structure check (simple)
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    return { ok: false, error: "Please enter a valid email address." };
+  if (!emailPattern.test(email)) return { ok: false, error: "Please enter a valid email address." };
+
+  const key = "tm_users";
+  let users = {};
+  try {
+    users = JSON.parse(localStorage.getItem(key) || "{}");
+  } catch (err) {
+    users = {};
   }
 
-  // Save user (single-user demo)
-  const user = { email: email.toLowerCase(), password };
+  const normalized = email.toLowerCase();
+  if (users[normalized]) return { ok: false, error: "Account with that email already exists. Please log in." };
+
+  users[normalized] = { password, name };
+
   try {
-    localStorage.setItem("tm_user", JSON.stringify(user));
+    localStorage.setItem(key, JSON.stringify(users));
     return { ok: true };
   } catch (err) {
     return { ok: false, error: "Unable to save user in localStorage." };
   }
 }
 
-/**
- * loginUser(email, password)
- * - checks credentials against saved user in localStorage
- * - returns { ok: true, user } or { ok: false, error: "..." }
- */
 function loginUser(email, password) {
-  if (!email || !password) {
-    return { ok: false, error: "Please enter email and password." };
-  }
+  if (!email || !password) return { ok: false, error: "Please enter email and password." };
 
-  const saved = localStorage.getItem("tm_user");
-  if (!saved) return { ok: false, error: "No account found. Please sign up first." };
-
-  let savedUser;
+  const key = "tm_users";
+  let users = {};
   try {
-    savedUser = JSON.parse(saved);
+    users = JSON.parse(localStorage.getItem(key) || "{}");
   } catch (err) {
     return { ok: false, error: "Stored user data is corrupted." };
   }
 
-  if (savedUser.email !== email.toLowerCase() || savedUser.password !== password) {
-    return { ok: false, error: "Invalid email or password." };
-  }
+  const normalized = email.toLowerCase();
+  const savedUser = users[normalized];
+  if (!savedUser) return { ok: false, error: "No account found. Please sign up first." };
 
-  return { ok: true, user: savedUser };
+  if (savedUser.password !== password) return { ok: false, error: "Invalid email or password." };
+
+  return {
+    ok: true,
+    user: {
+      email: normalized,
+      name: savedUser.name
+    }
+  };
 }
 
-/* ========== ATTACH AUTH HANDLERS ========== */
 function attachAuthHandlers(element) {
-  // wire segmented control radios to show views
+  if (!element) return;
+
   const seg = element.querySelector(".segmented-control");
   if (seg) {
     const radios = seg.querySelectorAll('input[type="radio"]');
-    if (radios[0]) radios[0].addEventListener("change", () => { if (radios[0].checked) showView("login"); });
-    if (radios[1]) radios[1].addEventListener("change", () => { if (radios[1].checked) showView("signup"); });
-
     const labels = seg.querySelectorAll("label");
+
+    if (radios[0]) radios[0].addEventListener("change", () => showView("login"));
+    if (radios[1]) radios[1].addEventListener("change", () => showView("signup"));
     if (labels[0]) labels[0].addEventListener("click", () => showView("login"));
     if (labels[1]) labels[1].addEventListener("click", () => showView("signup"));
   }
 
-  // form submit handling (one form per component)
   const form = element.querySelector("form");
   if (form && !form.dataset.handlerAttached) {
     form.dataset.handlerAttached = "true";
@@ -106,44 +104,74 @@ function attachAuthHandlers(element) {
       ev.preventDefault();
 
       const view = form.closest("[data-view]")?.getAttribute("data-view");
-
-      // find fields by name attribute (be sure these attributes exist in your HTML)
       const email = form.querySelector("input[name='email']")?.value.trim();
       const password = form.querySelector("input[name='password']")?.value.trim();
+      const name = form.querySelector("input[name='name']")?.value.trim() || "";
 
       if (view === "signup") {
-        const res = registerUser(email, password);
-        if (!res.ok) {
-          alert(res.error);
-          return;
-        }
+        const res = registerUser(email, password, name);
+        if (!res.ok) return alert(res.error);
 
-        // success
-        alert("Signup successful! Please log in.");
-        // if login view already loaded, prefill the email field
-        const loginSection = document.querySelector('[data-view="login"]');
+        const loginSection = element.querySelector('[data-view="login"]');
         if (loginSection) {
           const loginEmail = loginSection.querySelector("input[name='email']");
           if (loginEmail) loginEmail.value = email;
         }
+
         showView("login");
         return;
       }
 
       if (view === "login") {
         const res = loginUser(email, password);
-        if (!res.ok) {
-          alert(res.error);
-          return;
-        }
+        if (!res.ok) return alert(res.error);
 
-        // success -> go to dashboard
-        alert("Login successful!");
-        // (optionally store a logged-in flag)
-        localStorage.setItem("tm_logged_in", JSON.stringify({ email: res.user.email, at: new Date().toISOString() }));
+        localStorage.setItem(
+          "tm_logged_in",
+          JSON.stringify({
+            email: res.user.email,
+            name: res.user.name || "User",
+            at: new Date().toISOString()
+          })
+        );
+
         showView("dashboard");
-        return;
+        window.initDashboard();
       }
     });
   }
 }
+
+function initAuthInternal() {
+  const authRoot = document.querySelector('[data-view="auth"]');
+  if (!authRoot) return;
+
+  const loggedInRaw = localStorage.getItem("tm_logged_in");
+  if (loggedInRaw) {
+    try {
+      const loggedInUser = JSON.parse(loggedInRaw);
+      if (loggedInUser && loggedInUser.email) {
+        attachAuthHandlers(authRoot);
+        const nested = authRoot.querySelectorAll('[data-view]');
+        nested.forEach((el) => attachAuthHandlers(el));
+
+        showView("dashboard");
+        window.initDashboard();
+        return;
+      }
+    } catch (err) {
+      console.warn("tm_logged_in corrupted, falling back to login");
+    }
+  }
+
+  authRoot.classList.add("active");
+  attachAuthHandlers(authRoot);
+
+  const nested = authRoot.querySelectorAll('[data-view]');
+  nested.forEach((el) => attachAuthHandlers(el));
+
+  showView("login");
+}
+
+window.initAuth = initAuthInternal;
+document.addEventListener("DOMContentLoaded", initAuthInternal);

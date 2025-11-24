@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="./modules/auth/signup/signup.css">
-<div data-import="./modules/background/background.html"></div>
+<!DOCTYPE html>
+<link rel="stylesheet" href="/modules/auth/signup/signup.css">
+<div data-import="/modules/background/background.html"></div>
 
-<section class="signup-page">
+<section class="signup-page" data-view="signup">
   <div class="card-signup-page">
     <form class="signup-form">
       <header>
@@ -17,15 +18,17 @@
       </header>
 
 <div class="segmented-control" role="tablist">
-  <input type="radio" name="seg" id="seg-login" checked>
-  <label for="seg-login" role="tab" aria-controls="panel-login">Login</label>
+  <input type="radio" name="auth-signup" id="seg-login-signup">
+  <label for="seg-login-signup">Login</label>
 
-  <input type="radio" name="seg" id="seg-signup">
-  <label for="seg-signup" role="tab" >Sign Up</label>
+  <input type="radio" name="auth-signup" id="seg-signup-signup" checked>
+  <label for="seg-signup-signup">Sign Up</label>
 
   <div class="slider"></div>
 </div>
-       
+
+
+
         <div class="form-row">  
 
             <div class="form-group">
@@ -37,7 +40,7 @@
 </div>
 
        <div class="form-group">
-  <label>Email*</label>
+  <label for="signup-email">Email*</label>
   <div class="input-signup">
   <img src="/assets/images/email.svg" alt="">
   <input  id="signup-email" type="text" autocomplete="email" name="email"  placeholder="johndoe@example.com" required/>
@@ -45,7 +48,7 @@
 </div>
 
 <div class="form-group">
-  <label>Password*</label>
+  <label for="signup-password">Password*</label>
  <div class="input-signup">
   <img src="/assets/images/lock.svg" alt="">
   <input type="password" id="signup-password" autocomplete="new-password" name="password"  placeholder="••••••••" required/>
@@ -54,12 +57,11 @@
 </div>
    
   
-      <div class="button-component">
+   <div class="button-component">
           <button type="button" class="btn btn-ghost"> Help?</button>
           <button id="signup-button"  type="submit" class="btn btn-primary">Create Account</button>
         </div>
-     
-       
+    
       <div data-import="./components/footer/footer.html"></div>
 
       </div>

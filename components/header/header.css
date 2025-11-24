@@ -1,0 +1,46 @@
+.sidebar-header{
+display: flex;
+gap: 12px;
+padding-bottom: 12px;
+border-bottom: 1px solid #E5E7EB;
+
+
+}
+#sidebar-image{
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #155DFC;
+  margin-top: 12px;
+
+  
+
+}
+.sidebar-header .sidebar-text img{
+color: #fff;
+width: 20px;
+height:20px;
+ filter: brightness(0) invert(1);
+
+}
+.sidebar-header-content{
+ display: flex;
+ gap: 58px;
+
+}
+#sidebar-header{
+     margin-top: 20px;
+     color : oklch(0.21 0.034 264.665);
+     font-weight: 700;
+     font-size: 16px;
+}
+
+.sidebar-menu img{            
+  width: 16px;
+  height: 16px;
+  margin-top: 24px;
+  transition: transform 0.3s ease;
+  transform-origin: center center; 
+ 
+}

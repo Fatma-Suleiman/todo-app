@@ -4,8 +4,7 @@
   max-height:114vh ;
   z-index: 10;
   height: auto;
-  display: flex;
-  flex-direction: column;
+   
   flex-wrap: nowrap;
   border-radius: 16px;
   background-color: oklab(0.999994 0.0000455678 0.0000200868 / 0.95);
@@ -138,12 +137,15 @@ header h4{
  margin:4px
   
 }
-#seg-login:checked ~ .slider {
+
+.segmented-control input[type="radio"]:first-of-type:checked ~ .slider {
   transform: translateX(0%);
 }
-#seg-signup:checked ~ .slider {
+
+.segmented-control input[type="radio"]:nth-of-type(2):checked ~ .slider {
   transform: translateX(100%);
 }
+
 
 .segmented-control label {
   position: relative;
