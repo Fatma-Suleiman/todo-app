@@ -164,22 +164,31 @@ font-weight: 700;
    
 }
 
-.recent_class, .button_actions{
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-   
+.recent_class img{
+    width: 22px;
+    height: 22px;
+   margin-top: 20px;
     
 }
 
+.button_actions img{
+    width: 22px;
+    height: 22px;
+      margin-top: 20px;
+}
 
-
+.recent_class, .button_actions{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;    
+}
 
 .btn-actions{
 display: flex;
 flex-direction: column;
 gap: 10px;
-padding: 10px 20px;
+
+
 }
 
 .btn-task, .btn-expense, .btn-note {
@@ -187,9 +196,10 @@ display: flex;
 flex-direction: row;
 border-radius: 12px;
 width: 100%;
-padding: 10px;
+padding: 16px;
 background-color: #F8F9FA;
 border: 1px solid #ebe5e5;
+
 }
 
 .btn-task-content, .btn-expense-content, .btn-note-content{
@@ -248,15 +258,24 @@ font-weight: 500;
      border-top: 1px solid #E5E7EB;
     margin-top: 366px;
     display: flex;
-    font-weight: 500;
+    
     gap: 12px;
-    color: red;
+    
     cursor: pointer;
+  
     
 }
 
+#logout-text{
+font-weight: 500;
+color: red;
+
+}
+
+
 .logoutbtn img{
 color: red;
-width: 16px;
-height: 16px;
+width: 18px;
+height: 18px;
+
 }

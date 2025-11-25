@@ -22,10 +22,25 @@
   
 }
 
+.profile-info{
+display: flex;
+flex-direction: column;
+
+}
+
+.profile-info h4{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: oklch(0.21 0.034 264.665);
+  line-height: 1;
+  
+}
+
 .profile-info p{
   margin: 0;
   font-size: 12px;
   font-weight: 400;
-  color: #40444a;
+  color: oklch(0.551 0.027 264.364);
 
 }
