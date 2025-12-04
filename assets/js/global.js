@@ -74,5 +74,39 @@ document.addEventListener("DOMContentLoaded", () => {
       try { window.initProfile(); } 
       catch (err) { console.error("initProfile error:", err); }
     }
+
+    (function setupSpaNav() {
+      if (window.__spaNavSetup) return;
+      window.__spaNavSetup = true;
+
+      document.addEventListener('click', (e) => {
+        const a = e.target.closest('.navbar a');
+        if (!a) return;
+
+        const href = a.getAttribute('href') || '';
+        if (!href.startsWith('#')) return;
+
+        e.preventDefault();
+        const view = href.slice(1); 
+
+        if (typeof showView === 'function') {
+          try { showView(view); }
+          catch (err) { console.error('showView threw:', err); }
+        }
+
+        try {
+          history.replaceState(null, '', '#' + view);
+        } catch {
+          location.hash = '#' + view;
+        }
+      }, true);
+
+      const initial = location.hash.replace('#','');
+      if (initial && typeof showView === 'function') {
+        try { showView(initial); }
+        catch (err) { console.error('showView initial failed:', err); }
+      }
+    })();
+
   });
 });

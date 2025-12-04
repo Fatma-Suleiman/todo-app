@@ -1,0 +1,149 @@
+.community-wrapper{
+   box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+.community-content{
+margin:32px 32px 0px 32px;
+flex: 1;
+ 
+}
+.community_page{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.text-area textarea{
+display: flex;
+padding: 20px 320px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+   gap: 12px;
+   border-radius: 12px;
+}
+
+
+/* composer container */
+.composer {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px;
+  margin: 25px;
+  background: #fff; 
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.04); 
+}
+
+.composer-left .profile-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #3153FA;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex: 0 0 44px;
+}
+
+.composer-center {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+ 
+}
+
+.composer_empty_state {
+  margin: 25px;
+  padding: 32px;
+  text-align: center;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.05);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.composer_empty_state img {
+  width: 48px;
+  opacity: 0.6;
+}
+
+.composer_empty_state p {
+  color: #64748b;
+}
+
+
+.composer-input {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #9DC0FA;
+  padding: 12px 56px 12px 12px; 
+  box-shadow: 0 1px 0 rgba(157, 192, 250, 1) inset;
+}
+
+
+.composer-input textarea {
+  width: 100%;
+  min-height: 48px;       
+  max-height: 220px;   
+  resize: vertical;
+  overflow: auto;
+  border: none;
+  resize: none;
+  background: transparent;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 6px 0;
+  color:#9DC0FA;
+}
+
+.composer-controls {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: #f1f5f9;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.composer-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-post {
+ background: rgba(21,93,252,0.4);  
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(6,30,60,0.06);
+}

@@ -2,19 +2,28 @@ function showView(name) {
   const allViews = document.querySelectorAll("[data-view]");
   allViews.forEach((el) => {
     const viewName = el.getAttribute("data-view");
+
+    if (viewName === "left-side") {
+      el.classList.toggle("active", name !== "login" && name !== "signup");
+      return;
+    }
+
+    if (viewName === "auth") {
+      el.classList.toggle("active", name === "login" || name === "signup");
+      return;
+    }
+
     el.classList.toggle("active", viewName === name);
   });
 
-  const authRoot = document.querySelector('[data-view="auth"]');
-  if (authRoot) {
-    authRoot.classList.toggle("active", name === "login" || name === "signup");
+  if (name === "login" || name === "signup") {
+    document.body.classList.add("auth-mode");
+  } else {
+    document.body.classList.remove("auth-mode");
   }
 
   const activeSection = document.querySelector(`[data-view="${name}"]`);
-  if (!activeSection) {
-    console.warn(`showView: no element found with data-view="${name}"`);
-    return;
-  }
+  if (!activeSection) return;
 
   const seg = activeSection.querySelector(".segmented-control");
   if (seg) {
@@ -33,7 +42,8 @@ function registerUser(email, password, name = "") {
   if (password.length < 6) return { ok: false, error: "Password must be at least 6 characters long." };
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) return { ok: false, error: "Please enter a valid email address." };
+  if (!emailPattern.test(email)) 
+    return { ok: false, error: "Please enter a valid email address." };
 
   const key = "tm_users";
   let users = {};

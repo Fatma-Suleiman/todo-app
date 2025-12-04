@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="/modules/tasks/tasks.css">
+
+<section class="tasks-wrapper">
+<main class="task-content">
+<div class="task_page">
+<header>
+  <div class="task_header">
+<img src="/assets/images/square-check-big.png" alt="">
+<div class="task_text">
+<h2>Task Management</h2>
+<p>Manage and track your tasks</p>
+</div>
+  </div>  
+</header>
+
+<div class="task_summary">
+   <div class="segmented-control-tasks" role="tablist">
+  <input type="radio" name="task-tabs" id="seg-tasks" checked>
+  <label for="seg-tasks" data-target="tasks">My Tasks</label>
+
+  <input type="radio" name="task-tabs" id="seg-ai">
+  <label for="seg-ai" data-target="ai-summary">AI Summary</label>
+
+  <div class="slider"></div>
+</div>
+
+
+<div data-view="tasks"  class="task-view-content active-view">
+<div class="task_controls">
+     <div class="filters">
+        <div class="active_tasks"> <span class="filter" data-filter="active">0</span>
+        <p>Active Tasks</p>
+        </div>
+        
+        <div class="completed_tasks">
+        <span class="filter" data-filter="completed">0</span>
+        <p>Completed</p>
+        </div>
+      </div>
+   <div class="add-task">  
+<button id="add-task-btn" class="add-task-btn"><img src="/assets/images/plus.png" alt=""> Add Task</button>
+   </div>    
+</div>
+
+<div class="task-card-wrapper" id="new-task-card" style="display:none">
+  <div class="task-card">
+    <div class="task-card-text">
+      <div class="task_card_header"><img src="/assets/images/sparkles.png" alt="">  <h2>Create New Task</h2></div>
+    <p>Add a new task to your productivity list</p>
+   </div>
+
+    <form id="task-form">
+      <label class="input-with-image">
+  Title
+  <div class="input-image-wrapper">
+    <input type="text" name="title" placeholder="Enter task title" />
+    <img src="/assets/images/sparkles2.png" alt="icon" />
+  </div>
+</label>
+
+
+      <label>Description<textarea name="description" placeholder="Add task details"></textarea>
+      </label>
+
+     <div class="tasks_time">
+      <label>Priority<select name="priority">
+          <option value="low">Low</option>
+          <option value="medium" selected >Medium</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+    <div  class="due_date">
+      <label>Due Date<input type="date" name="dueDate" ></label>
+      </div>
+    </div>
+
+      <div class="task-card-actions">
+        <button type="button" id="cancel-task-btn" class="cancel-btn">Cancel</button>
+        <button type="submit" class="create-btn" id="create-btn">Create Task</button>
+        
+      </div>
+    </form>
+  </div>
+</div>
+
+
+      <div class="todos-container">
+        <ul id="todos-list">
+          <!-- li will be inserted here using js-->
+          <!-- <li class="todo-item">
+            <label class="checkbox-container">
+              <input type="checkbox" class="todo-checkbox" />
+              <span class="checkmark"></span>
+            </label>
+            <span class="todo-item-text">November Project</span>
+            <button class="delete-btn"><i class="fa-regular fa-trash-can></i></button>
+          </li> -->
+        </ul>
+      </div>
+</div>
+
+
+<div data-view="ai-summary"  class="task-view-content">
+       <div  class="powered_summary">
+        <div class="powered_content"><h3>AI-Powered Task Summary</h3>
+        <p>Get insights and recommendations for your tasks</p>
+        </div>
+        <div class="image-with-buttonPowered">
+           <button class="powered_button"> <img src="/assets/images/sparkles-white.png" alt="">Generate New</button>
+        </div>
+       </div>
+
+       <div class="summary_history">
+  <button class="summary_btn_ai" data-target="latest" aria-pressed="true">Latest Summary</button>
+  <button class="summary_btn_ai" data-target="history" aria-pressed="false">History</button>
+  <div class="summary_slider"></div>
+</div>
+
+<div class="summary_panels">
+  <div class="summary_panel" data-panel="latest"> 
+  <img src="/assets/images/chart-bar.png" alt="">
+  <p style="font-size: 16px;">No summary generated yet</p>
+  <p style="font-size: 14px;">Click "Generate New" to get AI-powered insights</p>
+  </div>
+
+  <div class="summary_panel" data-panel="history" style="display:none;">
+   <img src="/assets/images/history.png" alt="">
+  <p style="font-size: 16px;">No Summary History</p>
+  <p style="font-size: 14px;">Generate summaries to build up your history</p>
+  </div>
+</div>
+
+
+
+    </div>
+
+</div>
+
+
+</div>
+</main>
+</section>
+
+<script src="/modules/tasks/tasks.js"></script>

@@ -3,40 +3,11 @@
     width: 100%;
     min-height: 100vh;
     display: flex;
-
 }
-
-.left-side{
-   width: 255px; 
-   background-color: white;
-  padding-left:16px ;
-  height: 100vh;
- 
-}
-
-.left-side {
-    width: 255px;
-    transition: width 0.3s ease; 
-}
-
-.left-side.sidebar-collapsed {
-    width: 80px; 
-}
-
-.left-side.sidebar-collapsed .sidebar-text {
-    display: none; 
-}
-
-.left-side.sidebar-collapsed .sidebar-menu img{
-    transform: rotate(180deg);
-}
-
 .dashboard-content{
 margin:0px 32px;
 flex: 1;
-
 }
-
 
 .message h1{
 font-size: 30px;
@@ -44,22 +15,21 @@ font-weight: 700;
 margin-top: 20px;
 }
 
-
 .dashboard-summary {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     padding: 20px 0px;
- 
 }
-
 .dashboard-summary .card{
     background: #fff;
     padding: 40px;
     border-radius: 12px;
-    padding: 20px 24px;  
-   
-   
+    padding: 20px 24px;     
+}
+
+.dashboard-summary .card:hover{
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .summary-label{
@@ -71,23 +41,27 @@ margin-top: 20px;
 /* cards  */
 .active-content {
 display: flex;
-gap: 160px;
- 
+gap: 120px;
+
 }
 
 .total-expenses-content{
     display: flex;
-    gap: 140px;
+    gap: 100px;
+    
+   
 } 
 
 .completion-rate-content{
 display: flex;
-    gap: 140px;
+    gap: 90px;
+    
 }
 
 .total-notes-content{
 display: flex;
-gap: 160px;
+gap: 120px;
+
 }
 
 .active-content img{
@@ -97,8 +71,6 @@ gap: 160px;
   border-radius: 8px;
   background-color: #155DFC;
   color: #fff;
- 
-  
 }
 
   .total-expenses-content img{
@@ -107,11 +79,7 @@ gap: 160px;
   padding: 8px;
   border-radius: 8px;
   background-color: #0092B8;
-  color: #fff;
-   
- 
-
-  
+  color: #fff; 
 }
 .total-notes-content img{
    width: 32px;
@@ -120,7 +88,6 @@ gap: 160px;
   border-radius: 8px;
   background-color: #00A63E;
   color: #fff; 
-  
 }
 .completion-rate-content img{
     width: 32px;
@@ -138,37 +105,135 @@ padding: 56px 20px 20px 0px;
 .completed-tasks-view, .completed-rate-view, .total-notes-view, .expenses-total-view{
 font-size: 24px;
 font-weight: 700;
-
-
 }
 
 .task-actions-wrapper{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
-
+   
 }
 
 .task-actions-wrapper .card{
     background: #fff;
     border-radius: 6px;
-   padding: 14px 30px;
-   
-   
+   padding: 14px 30px; 
 }
 
 .task-actions-wrapper h4{
     color: rgb(30, 41, 59);
     font-size: 16px;
-    font-weight: 400;
-   
+    font-weight: 400; 
 }
 
 .recent_class img{
     width: 22px;
     height: 22px;
-   margin-top: 20px;
-    
+   margin-top: 20px;   
+}
+
+/*recent styling */
+.dashboard-recent-list{
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+.dashboard-recent-item{
+    display: flex;
+ align-items: center;
+  justify-content: space-between;
+ gap: 12px;
+  margin: 8px 0px 4px 0px;
+  border: 2px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 20px;
+ 
+}
+
+.dashboard-recent-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+ 
+}
+.dashboard-recent-title {
+  font-weight: 500;
+  font-size:14px;
+}
+.dashboard-recent-meta {
+  font-size: 12px;
+  font-weight:400;
+  color: oklch(0.551 0.027 264.364);
+  margin-left: 2px;
+}
+
+
+.dashboard-recent-right{
+   flex-shrink:0; 
+   justify-content: flex-end;
+}
+.dashboard-recent-left{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+
+.priority-badge{
+padding: 4px 8px;
+border-radius: 6px;
+font-size: 12px;
+font-weight:500;
+text-transform:capitalize;
+}
+.priority-low { background:#FFF085; color:#fff; }
+.priority-medium { background:#FEFCE8; color:#fff; }
+.priority-high { background:#FB2C36; color:#fff; }
+
+
+.todo-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #898e95; 
+  border-radius: 50%;
+  background: white;
+  position: relative;
+  pointer-events: none;
+  transition: all .12s ease;
+}
+
+.todo-checkbox:checked + .checkmark {
+  border-color: #fff;        
+  background:#00A63E;
+
+  
+}
+.todo-checkbox:checked + .checkmark::after {
+   content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+
+  /* checkmark:tick*/
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 .button_actions img{
@@ -187,8 +252,6 @@ font-weight: 700;
 display: flex;
 flex-direction: column;
 gap: 10px;
-
-
 }
 
 .btn-task, .btn-expense, .btn-note {
@@ -199,35 +262,39 @@ width: 100%;
 padding: 16px;
 background-color: #F8F9FA;
 border: 1px solid #ebe5e5;
-
 }
 
+.btn-task:hover, .btn-expense:hover, .btn-note:hover{
+    background-color: #06B6D4;
+    color: #fff;
+}
+
+.btn-task:hover h4, .btn-expense:hover h4, .btn-note:hover h4 {
+    color: #fff;
+}
 .btn-task-content, .btn-expense-content, .btn-note-content{
-display: flex;
-align-items: center;
-gap: 15px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
-
 .btn-actions h4,
-.btn-actions p
-
-{
- margin: 0;
+.btn-actions p{
  display: flex;
- flex-direction: column;
-
+ flex-direction: row;
 }
 
 .btn-actions h4{
 font-size: 14px;
 font-weight: 500;
-
+ margin: 0;
+ padding: 0;
 }
-
 .btn-actions p{
     font-size: 12px;
     font-weight: 500;
+    margin: 0;
+    padding: 0;
     color: oklch(0.551 0.027 264.364);
 }
 
@@ -254,28 +321,5 @@ font-weight: 500;
   border-radius: 8px;
   background-color:#DBFCE7 ;
 }
-.logoutbtn{
-     border-top: 1px solid #E5E7EB;
-    margin-top: 366px;
-    display: flex;
-    
-    gap: 12px;
-    
-    cursor: pointer;
-  
-    
-}
-
-#logout-text{
-font-weight: 500;
-color: red;
-
-}
 
 
-.logoutbtn img{
-color: red;
-width: 18px;
-height: 18px;
-
-}

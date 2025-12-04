@@ -2,14 +2,6 @@
  <link rel="stylesheet" href="/modules/dashboard/dashboard.css">
  
 <section class="dashboard">
-<aside class="left-side">
-    <div data-import="/components/header/header.html"></div>
-    <div data-import="/components/profile/profile.html"></div>
-    <div data-import="/components/navbar/navbar.html"></div>
-    <div id="logoutButton" class="logoutbtn"><img src="/assets/images/log-out.png" alt="">
-        <div id="logout-text" class="sidebar-text">Logout</div></div>
-</aside>
-
 <main class="dashboard-content">
 <h1 id="welcomeMessage" class="message">Good</h1>
 <p>Here's what's happening with your productivity today</p>
@@ -50,7 +42,16 @@
 <div class="task-actions-wrapper">
     <div class="card recent-tasks">
         <div class="recent_class"> <img src="/assets/images/clock.png" alt=""> <h4>Recent Tasks</h4></div>
-    <div class="recent-tasks-summary"><!--JS DYNAMIC--></div>
+    <div class="recent-tasks-summary"> 
+          <!--  will  insert ul  here using js-->
+          <!-- <li class="todo-item">
+            <label class="checkbox-container">
+              <input type="checkbox" class="todo-checkbox" />
+              <span class="checkmark"></span>
+            </label>
+            <span class="todo-item-text">November Project</span>
+            <button class="delete-btn"><i class="fa-regular fa-trash-can></i></button>
+          </li> --></div>
     </div>
 
     <div class="card actions"> <div class="button_actions"> <img src="/assets/images/trending-up.png" alt=""> <h4>Quick Actions</h4></div>

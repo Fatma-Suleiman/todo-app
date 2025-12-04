@@ -1,0 +1,57 @@
+.left-side{
+   width: 255px; 
+   background-color: white;
+  padding-left:16px ;
+  height: 100vh;
+  flex-shrink: 0;
+
+}
+
+
+.left-side {
+    width: 255px;
+    transition: width 0.3s ease; 
+}
+
+.left-side.sidebar-collapsed {
+    width: 80px; 
+}
+
+.left-side.sidebar-collapsed .sidebar-text {
+    display: none; 
+}
+
+.left-side.sidebar-collapsed .sidebar-menu img{
+    transform: rotate(180deg);
+}
+
+.sidebar-text {
+ font-size: 14px;
+ font-weight: 500;
+  line-height: 1;
+  color: rgb(51, 51, 51);
+
+}
+
+.logoutbtn{
+     border-top: 1px solid #E5E7EB;
+    margin-top: 260px;
+    display: flex;
+    border: none;
+    gap: 12px;
+    cursor: pointer;   
+}
+
+#logout-text{
+font-weight: 500;
+color: red;
+
+}
+
+
+.logoutbtn img{
+color: red;
+width: 18px;
+height: 18px;
+
+}

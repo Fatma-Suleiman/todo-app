@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     gap: 0;
-    color:rgb(104, 103, 103) ;
+    color: var(--footer-text);
 }
 
 .terms a{
@@ -14,6 +14,6 @@
 }
 .terms{
 font: 12px;
-color: rgb(132, 131, 131);
+color: var(--footer-subtext);
 }
 

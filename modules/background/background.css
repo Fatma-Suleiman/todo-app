@@ -61,7 +61,7 @@
 }
 
 .shape-1.blurred-orb {
-    background-color:rgb(117, 117, 228); /* Purple/Blue */
+    background-color:rgb(117, 117, 228); 
     top: 35%; 
     left: 7%; 
     width: 60px;
@@ -69,7 +69,7 @@
     animation: pulseFlicker 10s linear infinite; 
 }
 .shape-2.blurred-orb {
-    background-color:#6291ca; /* Purple/Blue */
+    background-color:#6291ca; 
     top: 70%; 
     left: 10%; 
     width: 60px;

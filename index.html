@@ -9,17 +9,19 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/css/global.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 <body>
-    <main>
-    
-    
+  <div class="app-wrapper">
+  <aside data-view="left-side" data-import="/components/sidebar/sidebar.html"></aside>
+    <main class="app-main">
     <section data-view="auth"  data-import="/modules/auth/auth.html"></section>
-
-
     <section  data-view="dashboard" data-import="/modules/dashboard/dashboard.html"></section>
+    <section  data-view="tasks" data-import="/modules/tasks/tasks.html"></section>
+    <section  data-view="community" data-import="/modules/community/community.html"></section>
   </main>
-
+</div>
   <script src="/assets/js/global.js"></script>
   
 </body>

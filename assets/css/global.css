@@ -1,9 +1,11 @@
-
 :root{
-    --primary-color: #3750FA;
+    --primary-color:#F9FAFB;
+    --secondary-color: #3750FA;
     --bg-color-1: #FFFFFF;
     --bg-color-2: #f7f9fd;
     --text: #222;
+    --footer-text: rgb(104, 103, 103);
+    --footer-subtext: rgb(132, 131, 131);
   }
 
   html,body { height: 100%; margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,6 +16,25 @@
   color: var(--text);
   font-family: ui-sans-serif, system-ui, sans-serif;
   
+}
+
+
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+
+.app-main {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
  
 }
+
+
+
+
 
